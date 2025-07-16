@@ -77,7 +77,8 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   try {
     const id = parseInt(req.params.id, 10);
-    const { title, description, categoryId, images, favorite } = req.body;
+    const { title, description, images, favorite } = req.body;
+    // const { title, description, categoryId, images, favorite } = req.body;
 
     const existing = await prisma.project.findUnique({ where: { id } });
     if (!existing) return res.status(404).json({ error: 'Проект не найден' });
