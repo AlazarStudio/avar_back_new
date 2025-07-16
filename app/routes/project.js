@@ -45,7 +45,7 @@ router.post('/', async (req, res) => {
     const {
       title,
       description,
-      categoryId,
+      // categoryId,
       images,
       favorite = false,
     } = req.body;
@@ -58,7 +58,7 @@ router.post('/', async (req, res) => {
       data: {
         title: title?.trim() || '',
         description: description || '',
-        categoryId: categoryId ? parseInt(categoryId, 10) : null,
+        // categoryId: categoryId ? parseInt(categoryId, 10) : null,
         images: imagePaths,
         favorite,
       },
@@ -87,7 +87,7 @@ router.put('/:id', async (req, res) => {
       data: {
         title: title ?? existing.title,
         description: description ?? existing.description,
-        categoryId: categoryId ? parseInt(categoryId, 10) : existing.categoryId,
+        // categoryId: categoryId ? parseInt(categoryId, 10) : existing.categoryId,
         images: images || existing.images,
         favorite: typeof favorite === 'boolean' ? favorite : existing.favorite,
       },

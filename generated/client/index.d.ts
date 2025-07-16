@@ -3500,12 +3500,10 @@ export namespace Prisma {
 
   export type ProjectAvgAggregateOutputType = {
     id: number | null
-    categoryId: number | null
   }
 
   export type ProjectSumAggregateOutputType = {
     id: number | null
-    categoryId: number | null
   }
 
   export type ProjectMinAggregateOutputType = {
@@ -3514,7 +3512,6 @@ export namespace Prisma {
     updatedAt: Date | null
     title: string | null
     description: string | null
-    categoryId: number | null
     favorite: boolean | null
   }
 
@@ -3524,7 +3521,6 @@ export namespace Prisma {
     updatedAt: Date | null
     title: string | null
     description: string | null
-    categoryId: number | null
     favorite: boolean | null
   }
 
@@ -3535,7 +3531,6 @@ export namespace Prisma {
     title: number
     description: number
     images: number
-    categoryId: number
     favorite: number
     _all: number
   }
@@ -3543,12 +3538,10 @@ export namespace Prisma {
 
   export type ProjectAvgAggregateInputType = {
     id?: true
-    categoryId?: true
   }
 
   export type ProjectSumAggregateInputType = {
     id?: true
-    categoryId?: true
   }
 
   export type ProjectMinAggregateInputType = {
@@ -3557,7 +3550,6 @@ export namespace Prisma {
     updatedAt?: true
     title?: true
     description?: true
-    categoryId?: true
     favorite?: true
   }
 
@@ -3567,7 +3559,6 @@ export namespace Prisma {
     updatedAt?: true
     title?: true
     description?: true
-    categoryId?: true
     favorite?: true
   }
 
@@ -3578,7 +3569,6 @@ export namespace Prisma {
     title?: true
     description?: true
     images?: true
-    categoryId?: true
     favorite?: true
     _all?: true
   }
@@ -3676,7 +3666,6 @@ export namespace Prisma {
     title: string | null
     description: string | null
     images: string[]
-    categoryId: number | null
     favorite: boolean
     _count: ProjectCountAggregateOutputType | null
     _avg: ProjectAvgAggregateOutputType | null
@@ -3706,7 +3695,6 @@ export namespace Prisma {
     title?: boolean
     description?: boolean
     images?: boolean
-    categoryId?: boolean
     favorite?: boolean
   }, ExtArgs["result"]["project"]>
 
@@ -3717,7 +3705,6 @@ export namespace Prisma {
     title?: boolean
     description?: boolean
     images?: boolean
-    categoryId?: boolean
     favorite?: boolean
   }, ExtArgs["result"]["project"]>
 
@@ -3728,7 +3715,6 @@ export namespace Prisma {
     title?: boolean
     description?: boolean
     images?: boolean
-    categoryId?: boolean
     favorite?: boolean
   }, ExtArgs["result"]["project"]>
 
@@ -3739,11 +3725,10 @@ export namespace Prisma {
     title?: boolean
     description?: boolean
     images?: boolean
-    categoryId?: boolean
     favorite?: boolean
   }
 
-  export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "title" | "description" | "images" | "categoryId" | "favorite", ExtArgs["result"]["project"]>
+  export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "title" | "description" | "images" | "favorite", ExtArgs["result"]["project"]>
 
   export type $ProjectPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Project"
@@ -3755,7 +3740,6 @@ export namespace Prisma {
       title: string | null
       description: string | null
       images: string[]
-      categoryId: number | null
       favorite: boolean
     }, ExtArgs["result"]["project"]>
     composites: {}
@@ -4186,7 +4170,6 @@ export namespace Prisma {
     readonly title: FieldRef<"Project", 'String'>
     readonly description: FieldRef<"Project", 'String'>
     readonly images: FieldRef<"Project", 'String[]'>
-    readonly categoryId: FieldRef<"Project", 'Int'>
     readonly favorite: FieldRef<"Project", 'Boolean'>
   }
     
@@ -8780,7 +8763,6 @@ export namespace Prisma {
     title: 'title',
     description: 'description',
     images: 'images',
-    categoryId: 'categoryId',
     favorite: 'favorite'
   };
 
@@ -9055,7 +9037,6 @@ export namespace Prisma {
     title?: StringNullableFilter<"Project"> | string | null
     description?: StringNullableFilter<"Project"> | string | null
     images?: StringNullableListFilter<"Project">
-    categoryId?: IntNullableFilter<"Project"> | number | null
     favorite?: BoolFilter<"Project"> | boolean
   }
 
@@ -9066,7 +9047,6 @@ export namespace Prisma {
     title?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
     images?: SortOrder
-    categoryId?: SortOrderInput | SortOrder
     favorite?: SortOrder
   }
 
@@ -9080,7 +9060,6 @@ export namespace Prisma {
     title?: StringNullableFilter<"Project"> | string | null
     description?: StringNullableFilter<"Project"> | string | null
     images?: StringNullableListFilter<"Project">
-    categoryId?: IntNullableFilter<"Project"> | number | null
     favorite?: BoolFilter<"Project"> | boolean
   }, "id">
 
@@ -9091,7 +9070,6 @@ export namespace Prisma {
     title?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
     images?: SortOrder
-    categoryId?: SortOrderInput | SortOrder
     favorite?: SortOrder
     _count?: ProjectCountOrderByAggregateInput
     _avg?: ProjectAvgOrderByAggregateInput
@@ -9110,7 +9088,6 @@ export namespace Prisma {
     title?: StringNullableWithAggregatesFilter<"Project"> | string | null
     description?: StringNullableWithAggregatesFilter<"Project"> | string | null
     images?: StringNullableListFilter<"Project">
-    categoryId?: IntNullableWithAggregatesFilter<"Project"> | number | null
     favorite?: BoolWithAggregatesFilter<"Project"> | boolean
   }
 
@@ -9479,7 +9456,6 @@ export namespace Prisma {
     title?: string | null
     description?: string | null
     images?: ProjectCreateimagesInput | string[]
-    categoryId?: number | null
     favorite?: boolean
   }
 
@@ -9490,7 +9466,6 @@ export namespace Prisma {
     title?: string | null
     description?: string | null
     images?: ProjectCreateimagesInput | string[]
-    categoryId?: number | null
     favorite?: boolean
   }
 
@@ -9500,7 +9475,6 @@ export namespace Prisma {
     title?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     images?: ProjectUpdateimagesInput | string[]
-    categoryId?: NullableIntFieldUpdateOperationsInput | number | null
     favorite?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -9511,7 +9485,6 @@ export namespace Prisma {
     title?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     images?: ProjectUpdateimagesInput | string[]
-    categoryId?: NullableIntFieldUpdateOperationsInput | number | null
     favorite?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -9522,7 +9495,6 @@ export namespace Prisma {
     title?: string | null
     description?: string | null
     images?: ProjectCreateimagesInput | string[]
-    categoryId?: number | null
     favorite?: boolean
   }
 
@@ -9532,7 +9504,6 @@ export namespace Prisma {
     title?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     images?: ProjectUpdateimagesInput | string[]
-    categoryId?: NullableIntFieldUpdateOperationsInput | number | null
     favorite?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -9543,7 +9514,6 @@ export namespace Prisma {
     title?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     images?: ProjectUpdateimagesInput | string[]
-    categoryId?: NullableIntFieldUpdateOperationsInput | number | null
     favorite?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -9999,17 +9969,6 @@ export namespace Prisma {
     isEmpty?: boolean
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type BoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -10022,13 +9981,11 @@ export namespace Prisma {
     title?: SortOrder
     description?: SortOrder
     images?: SortOrder
-    categoryId?: SortOrder
     favorite?: SortOrder
   }
 
   export type ProjectAvgOrderByAggregateInput = {
     id?: SortOrder
-    categoryId?: SortOrder
   }
 
   export type ProjectMaxOrderByAggregateInput = {
@@ -10037,7 +9994,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
     title?: SortOrder
     description?: SortOrder
-    categoryId?: SortOrder
     favorite?: SortOrder
   }
 
@@ -10047,29 +10003,11 @@ export namespace Prisma {
     updatedAt?: SortOrder
     title?: SortOrder
     description?: SortOrder
-    categoryId?: SortOrder
     favorite?: SortOrder
   }
 
   export type ProjectSumOrderByAggregateInput = {
     id?: SortOrder
-    categoryId?: SortOrder
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -10249,14 +10187,6 @@ export namespace Prisma {
     push?: string | string[]
   }
 
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
   }
@@ -10427,33 +10357,6 @@ export namespace Prisma {
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
