@@ -26,9 +26,9 @@ dotenv.config();
 const app = express();
 
 const sslOptions = {
-  key: fs.readFileSync('/etc/letsencrypt/live/<folder>/privkey.pem'),
-  cert: fs.readFileSync('/etc/letsencrypt/live/<folder>/cert.pem'),
-  ca: fs.readFileSync('/etc/letsencrypt/live/<folder>/chain.pem'),
+  key: fs.readFileSync('/etc/letsencrypt/live/avar.demoalazar.ru/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/avar.demoalazar.ru/cert.pem'),
+  ca: fs.readFileSync('/etc/letsencrypt/live/avar.demoalazar.ru/chain.pem'),
 };
 
 const httpsServer = https.createServer(sslOptions, app);
