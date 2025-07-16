@@ -4,6 +4,8 @@ import morgan from 'morgan';
 import cors from 'cors';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import fs from 'fs';
+import https from 'https';
 
 import { errorHandler, notFound } from './app/middleware/error.middleware.js';
 import { prisma } from './app/prisma.js';
@@ -22,6 +24,15 @@ import reinigungRoutes from './app/routes/reinigung.js';
 dotenv.config();
 
 const app = express();
+
+const sslOptions = {
+  key: fs.readFileSync('/etc/letsencrypt/live/<folder>/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/<folder>/cert.pem'),
+  ca: fs.readFileSync('/etc/letsencrypt/live/<folder>/chain.pem'),
+};
+
+const httpsServer = https.createServer(sslOptions, app);
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -50,8 +61,12 @@ app.use('/api/upload', uploadRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5000;
+const PORT = 443;
 
-app.listen(PORT, () =>
-  console.log(`🚀 Server running in ${process.env.NODE_ENV} on port ${PORT}`)
-);
+// app.listen(PORT, () =>
+//   console.log(`🚀 Server running in ${process.env.NODE_ENV} on port ${PORT}`)
+// );
+
+httpsServer.listen(PORT, () => {
+  console.log('Server is now running on https 443');
+});
