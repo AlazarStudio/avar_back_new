@@ -58,6 +58,7 @@ router.post('/', async (req, res) => {
       data: {
         title: title?.trim() || '',
         description: description || '',
+
         categoryId: categoryId ? parseInt(categoryId, 10) : null,
         images: imagePaths,
         favorite,
