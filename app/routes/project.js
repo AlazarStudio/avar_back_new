@@ -42,13 +42,7 @@ router.get('/:id', async (req, res) => {
 // 🔹 Создать проект
 router.post('/', async (req, res) => {
   try {
-    const {
-      title,
-      description,
-      categoryId,
-      images,
-      favorite = false,
-    } = req.body;
+    const { title, description, images, favorite = false } = req.body;
 
     const imagePaths = Array.isArray(images)
       ? images.map((img) => (typeof img === 'string' ? img : img.src))
@@ -58,8 +52,6 @@ router.post('/', async (req, res) => {
       data: {
         title: title?.trim() || '',
         description: description || '',
-
-        categoryId: categoryId ? parseInt(categoryId, 10) : null,
         images: imagePaths,
         favorite,
       },
@@ -78,7 +70,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   try {
     const id = parseInt(req.params.id, 10);
-    const { title, description, categoryId, images, favorite } = req.body;
+    const { title, description, images, favorite } = req.body;
 
     const existing = await prisma.project.findUnique({ where: { id } });
     if (!existing) return res.status(404).json({ error: 'Проект не найден' });
@@ -88,7 +80,6 @@ router.put('/:id', async (req, res) => {
       data: {
         title: title ?? existing.title,
         description: description ?? existing.description,
-        categoryId: categoryId ? parseInt(categoryId, 10) : existing.categoryId,
         images: images || existing.images,
         favorite: typeof favorite === 'boolean' ? favorite : existing.favorite,
       },

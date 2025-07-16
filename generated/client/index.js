@@ -212,7 +212,7 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
+    "rootEnvPath": "../../.env",
     "schemaEnvPath": "../../.env"
   },
   "relativePath": "../../prisma",
@@ -222,6 +222,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -230,8 +231,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id        Int      @id @default(autoincrement())\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  email    String @unique\n  login    String @unique\n  name     String\n  password String @db.VarChar(255)\n}\n\nmodel Category {\n  id        Int      @id @default(autoincrement())\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  title String?\n}\n\nmodel Project {\n  id        Int      @id @default(autoincrement())\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  title       String?\n  description String?\n  images      String[] @default([])\n\n  favorite Boolean @default(false)\n}\n\nmodel Reinigung {\n  id        Int      @id @default(autoincrement())\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  title       String?\n  description String?\n  images      String[] @default([])\n}\n\nmodel Handwerk {\n  id        Int      @id @default(autoincrement())\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  title       String?\n  description String?\n  images      String[] @default([])\n}\n\nmodel Feedback {\n  id        Int      @id @default(autoincrement())\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  name        String?\n  description String?\n  images      String[] @default([])\n}\n\nmodel Beratung {\n  id        Int      @id @default(autoincrement())\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  name        String\n  email       String\n  phoneNumber String\n  service     String\n  nachricht   String\n}\n",
-  "inlineSchemaHash": "b0bf5cabff064bde0a11c85b86523e84a949508ae0cdd3c4d2e8b64e85ff3450",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id        Int      @id @default(autoincrement())\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  email    String @unique\n  login    String @unique\n  name     String\n  password String @db.VarChar(255)\n}\n\nmodel Category {\n  id        Int      @id @default(autoincrement())\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  title String?\n}\n\nmodel Project {\n  id        Int      @id @default(autoincrement())\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  title       String?\n  description String?\n  images      String[] @default([])\n  favorite    Boolean  @default(false)\n}\n\nmodel Reinigung {\n  id        Int      @id @default(autoincrement())\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  title       String?\n  description String?\n  images      String[] @default([])\n}\n\nmodel Handwerk {\n  id        Int      @id @default(autoincrement())\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  title       String?\n  description String?\n  images      String[] @default([])\n}\n\nmodel Feedback {\n  id        Int      @id @default(autoincrement())\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  name        String?\n  description String?\n  images      String[] @default([])\n}\n\nmodel Beratung {\n  id        Int      @id @default(autoincrement())\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  name        String\n  email       String\n  phoneNumber String\n  service     String\n  nachricht   String\n}\n",
+  "inlineSchemaHash": "a0b15c01f206228b5b6bb4e3ed023bb6913baf98b8fe8e826a85367943cdb841",
   "copyEngine": true
 }
 

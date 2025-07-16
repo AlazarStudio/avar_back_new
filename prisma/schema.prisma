@@ -41,7 +41,6 @@ model Project {
   title       String?
   description String?
   images      String[]  @default([])
-  categoryId  Int?
   favorite    Boolean   @default(false)
 }
 

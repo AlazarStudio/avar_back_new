@@ -41,8 +41,7 @@ model Project {
   title       String?
   description String?
   images      String[] @default([])
-
-  favorite Boolean @default(false)
+  favorite    Boolean  @default(false)
 }
 
 model Reinigung {
