@@ -1,51 +1,57 @@
-import dotenv from 'dotenv'
-import express from 'express'
-import morgan from 'morgan'
-import path from 'path'
+import dotenv from 'dotenv';
+import express from 'express';
+import morgan from 'morgan';
+import cors from 'cors';
+import path, { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-import { errorHandler, notFound } from './app/middleware/error.middleware.js'
-import { prisma } from './app/prisma.js'
+import { errorHandler, notFound } from './app/middleware/error.middleware.js';
+import { prisma } from './app/prisma.js';
 
-import authRoutes from './app/auth/auth.routes.js'
-import userRoutes from './app/user/user.routes.js'
+import authRoutes from './app/auth/auth.routes.js';
+import userRoutes from './app/user/user.routes.js';
 
-import cors from 'cors'
+import beratungRoutes from './app/routes/beratung.js';
+import projectRoutes from './app/routes/project.js';
+import categoryRoutes from './app/routes/category.js';
+import feedbackRoutes from './app/routes/feedback.js';
+import uploadRoutes from './app/routes/uploads.js';
+import handwerkRoutes from './app/routes/handwerk.js';
+import reinigungRoutes from './app/routes/reinigung.js';
 
-dotenv.config()
+dotenv.config();
 
-const app = express()
+const app = express();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-app.use(cors())
+app.use(cors());
 
-async function main() {
-	if (process.env.NODE_ENV === 'development') app.use(morgan('dev'))
+// 👇 добавь после cors()
+app.use((req, res, next) => {
+  res.header('Access-Control-Expose-Headers', 'Content-Range');
+  next();
+});
+if (process.env.NODE_ENV === 'development') app.use(morgan('dev'));
+app.use(express.json());
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
-	app.use(express.json())
+// API routes
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/beratungs', beratungRoutes);
+app.use('/api/projects', projectRoutes);
+app.use('/api/handwerks', handwerkRoutes);
+app.use('/api/reinigungs', reinigungRoutes);
+app.use('/api/categories', categoryRoutes);
+app.use('/api/feedbacks', feedbackRoutes);
+app.use('/api/upload', uploadRoutes);
 
-	const __dirname = path.resolve()
+app.use(notFound);
+app.use(errorHandler);
 
-	app.use('/uploads', express.static(path.join(__dirname, '/uploads/')))
+const PORT = process.env.PORT || 5000;
 
-	app.use('/api/auth', authRoutes)
-	app.use('/api/users', userRoutes)
-
-	app.use(notFound)
-	app.use(errorHandler)
-
-	const PORT = process.env.PORT || 5000
-
-	app.listen(
-		PORT,
-		console.log(`Server running in ${process.env.NODE_ENV} on port ${PORT}`)
-	)
-}
-
-main()
-	.then(async () => {
-		await prisma.$disconnect()
-	})
-	.catch(async e => {
-		console.error(e)
-		await prisma.$disconnect()
-		process.exit(1)
-	})
+app.listen(PORT, () =>
+  console.log(`🚀 Server running in ${process.env.NODE_ENV} on port ${PORT}`)
+);
