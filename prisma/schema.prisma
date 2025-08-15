@@ -25,7 +25,7 @@ model User {
 }
 
 model Category {
-      id        Int      @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
@@ -33,60 +33,54 @@ model Category {
 }
 
 model Project {
-  id          Int       @id @default(autoincrement())
-  createdAt   DateTime  @default(now()) @map("created_at")
-  updatedAt   DateTime  @updatedAt @map("updated_at")
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   title       String?
   description String?
-  images      String[]  @default([])
-  favorite    Boolean   @default(false)
+  images      String[] @default([])
+  favorite    Boolean  @default(false)
 }
-
-
 
 model Reinigung {
-  id          Int       @id @default(autoincrement())
-  createdAt   DateTime  @default(now()) @map("created_at")
-  updatedAt   DateTime  @updatedAt @map("updated_at")
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   title       String?
-    description String?
-  images      String[]  @default([])
+  description String?
+  images      String[] @default([])
 }
 
-
-model Handwerk  {
-  id          Int       @id @default(autoincrement())
-  createdAt   DateTime  @default(now()) @map("created_at")
-  updatedAt   DateTime  @updatedAt @map("updated_at")
+model Handwerk {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   title       String?
-    description String?
-  images      String[]  @default([])
+  description String?
+  images      String[] @default([])
 }
-
 
 model Feedback {
-    id        Int      @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
   name        String?
   description String?
-  images      String[]  @default([])
-  
+  images      String[] @default([])
 }
 
 model Beratung {
-      id        Int      @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  name String
-  email String
+  name        String
+  email       String
   phoneNumber String
-  service String
-  nachricht String
+  service     String
+  nachricht   String
 }
-

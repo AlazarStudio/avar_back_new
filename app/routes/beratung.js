@@ -1,10 +1,23 @@
 import { Router } from 'express';
 import { PrismaClient } from '@prisma/client';
+import nodemailer from 'nodemailer';
 
 const router = Router();
 const prisma = new PrismaClient();
 
-// 🔹 Получить все записи с заголовками для React Admin
+// создаём transporter ОДИН раз (без env)
+const transporter = nodemailer.createTransport({
+  host: 'smtp.ionos.de',
+  port: 587,
+  secure: false, // STARTTLS
+  auth: {
+    user: 'K764544179', // логин от почты IONOS
+    pass: 'Abakarov8800', // пароль от почты
+  },
+  tls: { ciphers: 'TLSv1.2' },
+});
+
+// 🔹 Получить все записи (React Admin)
 router.get('/', async (req, res) => {
   const start = parseInt(req.query._start) || 0;
   const end = parseInt(req.query._end) || 10;
@@ -27,11 +40,12 @@ router.get('/', async (req, res) => {
   res.json(data);
 });
 
-// 🔹 Создание записи
+// 🔹 Создание записи + письмо на почту
 router.post('/', async (req, res) => {
   try {
     const { name, email, message, service, phone } = req.body;
 
+    // 1) Сохраняем в БД
     const created = await prisma.beratung.create({
       data: {
         name,
@@ -42,9 +56,29 @@ router.post('/', async (req, res) => {
       },
     });
 
+    // 2) Отправляем письмо
+    const mail = {
+      from: '"Сайт AVAR" <info@avar-kiel.de>',
+      to: 'info@avar-kiel.de', // шлём самому себе
+      subject: `Новая заявка (Beratung): ${service || 'без услуги'}`,
+      text: `Имя: ${name || '-'}
+Email: ${email || '-'}
+Телефон: ${phone || '-'}
+Услуга: ${service || '-'}
+Сообщение:
+${message || '-'}
+
+#${created.id} • ${new Date().toLocaleString()}`,
+      replyTo: email || undefined,
+    };
+
+    transporter.sendMail(mail).catch((err) => {
+      console.error('Email send error:', err.message);
+    });
+
     res.status(201).json(created);
   } catch (err) {
-    console.error(err); // ← добавь для отладки
+    console.error('Create Beratung error:', err);
     res.status(500).json({ error: 'Ошибка при создании' });
   }
 });
