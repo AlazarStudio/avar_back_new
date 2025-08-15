@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false, // STARTTLS
   auth: {
-    user: 'K764544179', // логин от почты IONOS
+    user: 'info@avar-kiel.de', // логин от почты IONOS
     pass: 'Abakarov8800', // пароль от почты
   },
   tls: { ciphers: 'TLSv1.2' },
