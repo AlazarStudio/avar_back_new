@@ -61,12 +61,12 @@ app.use('/api/upload', uploadRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
-const PORT = 443;
-
+// const PORT = 5000;
 // app.listen(PORT, () =>
 //   console.log(`🚀 Server running in ${process.env.NODE_ENV} on port ${PORT}`)
 // );
 
+const PORT = 443;
 httpsServer.listen(PORT, () => {
   console.log('Server is now running on https 443');
 });
