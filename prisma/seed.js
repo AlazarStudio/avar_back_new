@@ -4,7 +4,7 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function seedAdmin() {
-  const password = await hash('admin');
+  const password = await hash('ijd298uy!iun0');
 
   // Сначала удаляем старого
   await prisma.user.deleteMany({
@@ -16,7 +16,7 @@ async function seedAdmin() {
     data: {
       login: 'admin',
       email: 'admin@admin.com',
-      name: 'admin',
+      name: 'avaradmin',
       password,
     },
   });
