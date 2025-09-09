@@ -6,10 +6,14 @@ const prisma = new PrismaClient();
 async function seedAdmin() {
   const password = await hash('admin');
 
-  await prisma.user.upsert({
+  // Сначала удаляем старого
+  await prisma.user.deleteMany({
     where: { login: 'admin' },
-    update: {},
-    create: {
+  });
+
+  // Потом создаём нового
+  await prisma.user.create({
+    data: {
       login: 'admin',
       email: 'admin@admin.com',
       name: 'admin',
@@ -17,7 +21,7 @@ async function seedAdmin() {
     },
   });
 
-  console.log('✅ Admin user created');
+  console.log('✅ Admin user recreated');
   process.exit();
 }
 
